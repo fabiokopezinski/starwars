@@ -1,5 +1,6 @@
 package br.com.b2w.starwars.configuration;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -8,6 +9,8 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+
+@Configuration
 @Profile("dev")
 @OpenAPIDefinition(
 		  info = @Info(
