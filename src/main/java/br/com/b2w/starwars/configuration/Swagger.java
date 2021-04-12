@@ -38,7 +38,7 @@ public class Swagger {
 	@Bean
 	public OpenAPI customOpenAPI() {
 		Server server=new Server();
-		server.setUrl("http://localhost:"+port+path);
+		server.setUrl("https://star-wars-api-b2w.herokuapp.com/v1:"+port+path);
 		server.setDescription("Local");
 		return new OpenAPI()
 
