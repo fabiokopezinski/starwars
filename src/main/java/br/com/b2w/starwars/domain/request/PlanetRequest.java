@@ -15,6 +15,6 @@ public class PlanetRequest {
     @NotBlank(message = "O campo climate não pode ser nulo ou vazio")
     private String climate;
 
-    @NotBlank(message = "O campo ground não pode ser nulo ou vazio")
-    private String terrain;
+    @NotBlank(message = "O campo terrain não pode ser nulo ou vazio")
+    private String terrain; 
 }
