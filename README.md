@@ -39,3 +39,6 @@ Para possibilitar a equipe de front criar essa aplicação, queremos desenvolver
   
 # Executando o projeto
  + [Heroku](https://star-wars-api-b2w.herokuapp.com/v1/swagger)
+ + Docker: docker-compose up -d
+ + Docker url: http://localhost:8081/v1/swagger
+ + Ao usar o docker entrando no Swagger selecionar no Servers o http://localhost:8081/v1 
