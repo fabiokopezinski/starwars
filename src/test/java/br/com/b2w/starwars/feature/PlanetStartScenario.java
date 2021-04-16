@@ -2,7 +2,6 @@ package br.com.b2w.starwars.feature;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 
 import br.com.b2w.starwars.domain.Planet;
 import br.com.b2w.starwars.repository.command.PlanetCommandRepository;
@@ -14,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = "spring.config.location=classpath:application-test.yml")
+//@TestPropertySource(properties = "spring.config.location=classpath:application-test.yml")
 public class PlanetStartScenario extends AbstractSteps{
 
 
