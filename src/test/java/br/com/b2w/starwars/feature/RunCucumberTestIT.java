@@ -1,4 +1,4 @@
-package br.com.b2w.starwars.feature;
+/* package br.com.b2w.starwars.feature;
 
 import org.junit.runner.RunWith;
 
@@ -13,3 +13,4 @@ import io.cucumber.junit.CucumberOptions;
 public class RunCucumberTestIT {
     
 }
+ */
