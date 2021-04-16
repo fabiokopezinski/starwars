@@ -24,11 +24,58 @@ public class StarWarsScenarioFactory {
     public static final PlanetRequest PLANET_REQUEST = loadPlanetRequest();
     public static final Page<Planet> PLANET_ALL = loadPlanetAll();
     public static final Page<PlanetResponse> PLANET_ALL_RESPONSE = loadPlanetAllResponse();
+    public static final Planet PLANET_BDD=loadPlanetBDD();
+    public static final Planet PLANET_BDD_TWO=loadPlanetBDDTwo();
+    public static final PlanetRequest PLANET_REQUEST_BDD=loadPlanetRequestBDD();
 
     public static final Integer FILMS=12;
 
     private static PlanetResponse loadPlanetResponse() {
-        return new PlanetResponse("4721384732814", "TESTE", "desert", "arid", 12);
+    	
+    	List<String> climates=new ArrayList<>();
+    	climates.add("desert");
+    	
+    	List<String> terrains=new ArrayList<>();
+    	terrains.add("arid");
+    	
+        return new PlanetResponse("4721384732814", "TESTE", climates, terrains, 12);
+    }
+
+    private static PlanetRequest loadPlanetRequestBDD() {
+    	
+    	List<String> climates=new ArrayList<>();
+    	climates.add("temperate");
+    	
+    	List<String> terrains=new ArrayList<>();
+    	terrains.add("grasslands");
+    	terrains.add("mountains");
+    	
+		return new PlanetRequest("Alderaan",climates,terrains);
+	}
+
+	private static Planet loadPlanetBDDTwo() {
+		
+		List<String> climates=new ArrayList<>();
+    	climates.add("murky");
+    	
+    	List<String> terrains=new ArrayList<>();
+    	terrains.add("swamp");
+    	terrains.add("jungles");
+		
+        return new Planet("999", "Dagobah",climates, terrains, 12);
+    }
+
+    private static Planet loadPlanetBDD() {
+    	
+    	List<String> climates=new ArrayList<>();
+    	climates.add("temperate");
+    	
+    	List<String> terrains=new ArrayList<>();
+    	terrains.add("forests");
+    	terrains.add("mountains");
+    	terrains.add("lakes");
+    	
+        return new Planet("9999", "Endor",climates, terrains, 12);
     }
 
     private static Page<PlanetResponse> loadPlanetAllResponse() {
@@ -53,10 +100,24 @@ public class StarWarsScenarioFactory {
     }
 
     private static Planet loadPlanet() {
-        return new Planet("4721384732814", "TESTE", "desert", "arid", 12);
+    	
+    	List<String> climates=new ArrayList<>();
+    	climates.add("desert");
+    	
+    	List<String> terrains=new ArrayList<>();
+    	terrains.add("arid");
+    	
+        return new Planet("4721384732814", "TESTE", climates, terrains, 12);
     }
 
     private static PlanetRequest loadPlanetRequest() {
-        return new PlanetRequest("TESTE", "desert", "terrain");
+    	
+    	List<String> climates=new ArrayList<>();
+    	climates.add("desert");
+    	
+    	List<String> terrains=new ArrayList<>();
+    	terrains.add("terrain");
+    	
+        return new PlanetRequest("TESTE", climates, terrains);
     }
 }

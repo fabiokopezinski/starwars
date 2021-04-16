@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-StarwarsApplication<starwars>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.com.b2w.starwars.StarwarsApplication",
+            "projectName": "starwars",
+            "args": [
+                "--spring.config.location=classpath:application-test.yml"
+            ]
+        }
+    ]
+}

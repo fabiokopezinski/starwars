@@ -29,8 +29,10 @@ public class PlanetServiceCommand {
 
     public PlanetResponse save(@Valid PlanetRequest planetRequest) throws Exception {
 
-        Planet planet = Planet.of(planetRequest);
+        Planet planet = new Planet();
 
+        planet.of(planetRequest);
+        
         queryRepository.findByName(planet.getName()).ifPresent(m -> {
             throw Message.PLANET_EXIST.asBusinessException();
         });

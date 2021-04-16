@@ -1,5 +1,8 @@
 package br.com.b2w.starwars.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -20,45 +23,56 @@ import lombok.NoArgsConstructor;
 @Document(collection = "planet")
 public class Planet {
 
-    @Id
-    private String planetCode;
+	@Id
+	private String planetCode;
 
-    @Indexed(unique = true)
-    @Field(name = "NOME")
-    private String name;
+	@Indexed(unique = true)
+	@Field(name = "NOME")
+	private String name;
 
-    @Field(name = "CLIMA")
-    private String climate;
+	@Field(name = "CLIMA")
+	private List<String> climate;
 
-    @Field(name = "TERRENO")
-    private String terrain;
+	@Field(name = "TERRENO")
+	private List<String> terrain;
 
-    @Field(name = "APARICOES_FILMES")
-    private Integer filmAppearances;
+	@Field(name = "APARICOES_FILMES")
+	private Integer filmAppearances;
 
-    public static Page<PlanetResponse> toPage(Page<Planet> findAll) {
+	public static Page<PlanetResponse> toPage(Page<Planet> findAll) {
 
-        return findAll.map(m -> {
-            return new PlanetResponse(m.getPlanetCode(), m.getName(), m.getClimate(), m.getTerrain(),
-                    m.getFilmAppearances());
-        });
+		return findAll.map(m -> {
 
-    }
+			return new PlanetResponse(m.getPlanetCode(), m.getName(), m.getClimate(), m.getTerrain(),
+					m.getFilmAppearances());
+		});
 
-    public PlanetResponse toDto(){
-        return new PlanetResponse(this.planetCode, this.name, this.climate, this.terrain, this.filmAppearances);
-    }
+	}
 
-    public static Planet of(PlanetRequest planetRequest){
-        return Planet.builder()
-        .name(planetRequest.getName())
-        .climate(planetRequest.getClimate())
-        .terrain(planetRequest.getTerrain())
-        .build();
-    }
+	public PlanetResponse toDto() {
+		return new PlanetResponse(this.planetCode, this.name, this.climate, this.terrain, this.filmAppearances);
+	}
 
-    public void setNumberAp(Integer numberAp) {
-        this.filmAppearances=numberAp;
-    }
+	public void of(PlanetRequest planetRequest) {
+
+		this.name = planetRequest.getName();
+
+		if (this.terrain == null) {
+			this.terrain = new ArrayList<>();
+		}
+
+		this.terrain.addAll(planetRequest.getTerrain());
+
+		if (this.climate == null) {
+			this.climate = new ArrayList<>();
+		}
+
+		this.climate.addAll(planetRequest.getClimate());
+
+	}
+
+	public void setNumberAp(Integer numberAp) {
+		this.filmAppearances = numberAp;
+	}
 
 }

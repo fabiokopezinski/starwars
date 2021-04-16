@@ -1,5 +1,7 @@
 package br.com.b2w.starwars.domain.response;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,9 +14,9 @@ public class PlanetResponse {
        
     private String name;
     
-    private String climate;
+    private List<String> climate;
    
-    private String terrain;
+    private List<String> terrain;
 
     private Integer filmAppearances;
 }
