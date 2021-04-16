@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+      MONGO_DATABASE: starwars
+      MONGO_COLLECTIONS: planet
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+        - redelocal
+
+
+
+  starwars:
+
+        image: starwars
+
+        restart: always
+
+        ports:
+           - "8081:8081"
+
+        working_dir: /app
+
+        build:
+          context: .
+          dockerfile: Dockerfile
+
+        command: mvn spring-boot:run 
+
+        depends_on:
+          - mongodb_container
+        networks:
+        - redelocal
+        environment:
+          - "SPRING_PROFILES_ACTIVE="
+
+volumes:
+  mongodb_data_container:
+
+networks:
+   redelocal:
+        driver: bridge
