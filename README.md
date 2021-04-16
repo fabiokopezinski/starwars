@@ -38,4 +38,4 @@ Para possibilitar a equipe de front criar essa aplicação, queremos desenvolver
   + MongoDb (atlas)
   
 # Executando o projeto
- + [Heroku](star-wars-api-b2w.herokuapp.com/v1/swagger)
+ + [Heroku](https://star-wars-api-b2w.herokuapp.com/v1/swagger)
