@@ -14,7 +14,7 @@
 	<description>Api Star wars</description>
 	<properties>
 		<sonar.coverage.jacoco.xmlReportPaths>
-			../app-it/target/site/jacoco-aggregate/jacoco.xml
+			../app-it/target/site/jacoco.xml
 		</sonar.coverage.jacoco.xmlReportPaths>
 		<cucumber.version>4.7.2</cucumber.version>
 		<java.version>11</java.version>
