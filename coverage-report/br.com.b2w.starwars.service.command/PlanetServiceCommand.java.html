@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlanetServiceCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">starwars</a> &gt; <a href="index.source.html" class="el_package">br.com.b2w.starwars.service.command</a> &gt; <span class="el_source">PlanetServiceCommand.java</span></div><h1>PlanetServiceCommand.java</h1><pre class="source lang-java linenums">package br.com.b2w.starwars.service.command;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+
+import br.com.b2w.starwars.domain.Planet;
+import br.com.b2w.starwars.domain.request.PlanetRequest;
+import br.com.b2w.starwars.domain.response.PlanetResponse;
+import br.com.b2w.starwars.repository.command.PlanetCommandRepository;
+import br.com.b2w.starwars.repository.query.PlanetQueryRepository;
+import br.com.b2w.starwars.service.SwapiService;
+import br.com.b2w.starwars.validations.Message;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+<span class="fc" id="L19">@Slf4j</span>
+<span class="fc" id="L20">@AllArgsConstructor</span>
+@Validated
+public class PlanetServiceCommand {
+
+    private PlanetCommandRepository commandRepository;
+
+    private PlanetQueryRepository queryRepository;
+
+    private SwapiService service;
+
+    public PlanetResponse save(@Valid PlanetRequest planetRequest) throws Exception {
+
+<span class="fc" id="L32">        Planet planet = new Planet();</span>
+
+<span class="fc" id="L34">        planet.of(planetRequest);</span>
+        
+<span class="fc" id="L36">        queryRepository.findByName(planet.getName()).ifPresent(m -&gt; {</span>
+<span class="fc" id="L37">            throw Message.PLANET_EXIST.asBusinessException();</span>
+        });
+
+<span class="fc" id="L40">        planet.setNumberAp(service.getFilms(planet.getName()));</span>
+
+<span class="fc" id="L42">        Planet planetSave = commandRepository.save(planet);</span>
+
+<span class="fc" id="L44">        log.info(&quot;method=save planetCode={}&quot;, planetSave.getPlanetCode());</span>
+
+<span class="fc" id="L46">        return planetSave.toDto();</span>
+    }
+
+    public void delete(String id) throws Exception {
+
+<span class="fc" id="L51">        queryRepository.findById(id).orElseThrow(Message.NOT_FOUND_PLANET::asBusinessException);</span>
+
+<span class="fc" id="L53">        commandRepository.deleteByPlanetCode(id);</span>
+
+<span class="fc" id="L55">        log.info(&quot;method=delete planetCode={}&quot;, id);</span>
+
+<span class="fc" id="L57">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

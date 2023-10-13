@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+starwars,br.com.b2w.starwars.service.query,PlanetServiceQuery,0,69,0,0,0,12,0,5,0,5
+starwars,br.com.b2w.starwars.controller.query,PlanetControllerQuery,0,28,0,0,0,4,0,4,0,4
+starwars,br.com.b2w.starwars.controller.command,PlanetControllerCommand,0,22,0,0,0,4,0,3,0,3
+starwars,br.com.b2w.starwars.service.command,PlanetServiceCommand,0,74,0,0,0,14,0,5,0,5
