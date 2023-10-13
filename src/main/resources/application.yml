@@ -7,8 +7,7 @@ spring:
     name: api-starwars-application
   data:
     mongodb:
-      database: starwars
-      host: localhost
+      uri: mongodb+srv://fabiokopezinski:F124578o@development.mowli10.mongodb.net/dev?retryWrites=true&w=majority
   profiles:
     active: local
 springdoc:
