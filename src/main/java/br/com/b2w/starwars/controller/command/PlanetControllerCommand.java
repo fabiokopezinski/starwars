@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/planets")
 @AllArgsConstructor
 @RestController
-@Tag(name = "Planetas")
+@Tag(name = "Planetaas")
 public class PlanetControllerCommand {
 
     private PlanetServiceCommand command;
